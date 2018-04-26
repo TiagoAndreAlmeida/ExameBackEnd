@@ -8,7 +8,7 @@ const client = new Client({
     password: 'root',
     port: 5432,
 }) */
-const connectionString = 'postgresql://postgres:root@localhost:5432/shop';
+const connectionString = 'postgresql://postgres:root@localhost:5432/exames';
 const client = new Client({connectionString});
 
 module.exports = client;
