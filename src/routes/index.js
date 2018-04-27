@@ -8,8 +8,15 @@ const controller = require('../controllers/index');
 //const client = new Client({connectionString});
 
 //rota de teste
-router.get('/', (controller.get));
+router.get('/', controller.get);
 
+//rota de exame
 router.get('/:id', controller.getId);
+
+//inserir um novo exame
+router.post('/', controller.post);
+
+//deleta um exame
+router.delete('/:id', controller.delete);
 
 module.exports = router;

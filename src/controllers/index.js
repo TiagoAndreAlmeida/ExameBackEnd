@@ -34,3 +34,32 @@ exports.getId = (req, res, next) => {
         }
     });
 };
+
+exports.post = (req, res, next) => {
+    client.query('INSERT INTO exame(nome, faixa, descricao) VALUES($1, $2, $3)',
+    [req.body.nome, req.body.faixa, req.body.descricao], (err, result) => {
+        if(err){
+            res.status(400).send({
+                message: err.stack
+            });
+        }else{
+            res.status(200).send({
+                message: req.body.nome+' cadastrado!'
+            });
+        }
+    });
+};
+
+exports.delete = (req, res, next) => {
+    client.query('DELETE FROM exame WHERE nome=$1 RETURNING *', [req.params.id], (err, result) => {
+        if(err){
+            res.status(400).send({
+                message: err.stack
+            });
+        }else{
+            res.status(200).send({
+                message: 'linhas deletadas: '+result.rowCount
+            });
+        }
+    });
+};

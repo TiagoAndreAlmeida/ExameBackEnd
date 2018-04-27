@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const bodyparser = require('body-parser');
 
+//rotas
 const index = require('./routes/index');
 
 const router = express.Router();
